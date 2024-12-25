@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include <stdio.h> // this is called a preprocessor directive
 
 void pattern(int spaces, int bricks); // this is called a prototype"
 int main(void)
