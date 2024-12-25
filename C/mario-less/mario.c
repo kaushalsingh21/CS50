@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-void pattern(int spaces, int bricks);
+void pattern(int spaces, int bricks); // this is called a prototype"
 int main(void)
 {
     int height;
