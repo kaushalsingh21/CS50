@@ -4,22 +4,19 @@ int main(void)
 {
     int cash;
     int total = 0;
-    int remainder;
+    
     do
     {   
         printf("Change owed: ");
         scanf("%d", &cash);
     } while (cash <= 0);
 
+    int remainder = cash;
     int coins = cash/25;
     if (coins > 0)
     {
         total = total + coins;
         remainder = cash%25;
-    }
-    else
-    {
-        remainder = cash;
     }
 
     coins = remainder/10;
@@ -45,3 +42,8 @@ int main(void)
     printf("%d\n", total);
     
 }
+
+// int change (int rem, int denomination)
+// {
+
+// }
