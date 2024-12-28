@@ -1,22 +1,22 @@
 #include <stdio.h>
 
+// int change (int rem, int denomination, int tot);
 int main(void)
 {
-    int cash;
+    int remainder;
     int total = 0;
     
     do
     {   
         printf("Change owed: ");
-        scanf("%d", &cash);
-    } while (cash <= 0);
+        scanf("%d", &remainder);
+    } while (remainder <= 0);
 
-    int remainder = cash;
-    int coins = cash/25;
+    int coins = remainder/25;
     if (coins > 0)
     {
         total = total + coins;
-        remainder = cash%25;
+        remainder = remainder%25;
     }
 
     coins = remainder/10;
@@ -43,7 +43,12 @@ int main(void)
     
 }
 
-// int change (int rem, int denomination)
+// int change (int rem, int denomination, int tot)
 // {
-
+//     int coins = rem/denomination;
+//     if (coins > 0)
+//     {
+//         tot = tot + coins;
+//         rem = rem%denomination;
+//     }
 // }
