@@ -1,43 +1,46 @@
 #include <stdio.h>
 #include <math.h>
 
+int credit_chksum(long h1, int n, int even_flag);
+
 int main(void)
 {
     long credit;
     printf("Number:");
     scanf("%ld", &credit);
 
-    int h1 = credit/(int)100000000;
-    int h2 = credit%(int)100000000;
+    int sum_even = credit_chksum(credit, 10, 1);
+    int sum_odd = credit_chksum(credit, 1, 0);
+    int chksum_value = sum_even + sum_odd;
 
-    printf("part 1 is %d and part 2 is %d\n", h1, h2);
-
-    int sum = 0;
-
-    for (long i = 10; i < 100000000; i*=100)
-    {
-        int rem = h1%(i*10);
-        int num = rem/i;
-        sum = sum + (num*2);
-        printf("Even digit is: %d\n", num);
-        int rem1 = h2%(i*10);
-        int num1 = rem1/i;
-        printf("Even digit is: %d\n", num1);
-        sum = sum + (num1*2);
-    }
-
-    for (long i = 1; i < 100000000; i*=100)
-    {
-        int rem = h1%(i*10);
-        int num = rem/i;
-        sum = sum + (num*2);
-        printf("Odd digit is: %d\n", num);
-        int rem1 = h2%(i*10);
-        int num1 = rem1/i;
-        printf("Odd digit is: %d\n", num1);
-        sum = sum + (num1*2);
-    }
-
-    printf("Sum of evens is %d \n", sum);
+    printf("Checksum value is %d \n", chksum_value);
     
+}
+
+int credit_chksum(long h1, int n, int even_flag)
+{
+    int sum=0;
+    for (long i = n; i < pow(10, 16); i*=100)
+    {
+        long rem = h1%(i*10);
+        int num = rem/i;
+        if (even_flag == 1)
+        {
+            num*=2;
+            if (num/10>0)
+            {
+                int first = num/10;
+                int second = num%10;
+
+                num = first + second;
+            }
+            sum = sum + num;
+        }
+        else
+        {
+            sum = sum + num;
+        }
+    }
+
+    return sum;    
 }
