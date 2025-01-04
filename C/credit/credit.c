@@ -11,16 +11,27 @@ int main(void)
     scanf("%ld", &credit);
     int len = length(credit);
     int initial_digits = (int)(credit/((long)pow(10, length(credit)-2)));
-    
-    printf("length of digits is %d\n", len);
-    printf("starting 2 digits are: %d\n", initial_digits);
 
     int sum_even = credit_chksum(credit, 10, 1);
     int sum_odd = credit_chksum(credit, 1, 0);
     int chksum_value = sum_even + sum_odd;
 
-    printf("Checksum value is %d \n", chksum_value);
-    
+    if ( chksum_value == 20 && len ==15 && (initial_digits == 34 || initial_digits == 37) )
+    {
+        printf("American Express\n");
+    }
+    else if ( chksum_value == 20 && len == 16 &&  ( initial_digits >= 51 && initial_digits <= 55 ) )
+    {
+        printf("MasterCard\n");
+    }
+    else if ( chksum_value == 20 && ( len == 13 || len == 16 ) && ( initial_digits/10 == 4 ) )
+    {
+        printf("Visa\n");
+    }
+    else
+    {
+        printf("INVALID\n");
+    }
 }
 
 int credit_chksum(long h1, int n, int even_flag)
