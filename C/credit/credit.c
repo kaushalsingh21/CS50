@@ -16,8 +16,6 @@ int main(void)
     int sum_odd = credit_chksum(credit, 1, 0);
     int chksum_value = sum_even + sum_odd;
 
-    printf("Checksum value is %d \n", chksum_value);
-
     if ( chksum_value == 20 && len ==15 && (initial_digits == 34 || initial_digits == 37) )
     {
         printf("American Express\n");
