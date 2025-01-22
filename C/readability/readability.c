@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <string.h>
-
+#include <math.h>
 
 int main(void){
     printf("Text:");
@@ -11,17 +11,14 @@ int main(void){
     int word_count = 0;
     int sen_count =0;
 
-    int lenght = strlen(text);
-    printf("total length is %d and last element is %c\n", lenght, text[lenght]);
-
-    for (int i = 0, len = strlen(text); i < len; i++)
+    for (int i = 0, len = strlen(text); i <= len; i++)
     {
         if ( ( text[i] >= 'a' && text[i] <= 'z' ) || ( text[i] >= 'A' && text[i] <= 'Z'  ) )
         {
             letter_count++;
         }
 
-        if ( ( text[i] == ' ' || text[i] == '.' ) && text[i-1] != '.' )
+        if ( text[i] == ' ' || text[i] == '\0'  )
         {
             word_count++;
         }
@@ -31,16 +28,19 @@ int main(void){
             sen_count++;
         }
     }
-    
+
     double L = (letter_count/(double)word_count)*100;
     double S = (sen_count/(double)word_count)*100;
 
-    int index = 0.0588 * L - 0.296 * S - 15.8;
-
-    printf("L is %f and S is %f\n", L, S);
+    int index = round(0.0588 * L - 0.296 * S - 15.8);
 
     printf("index is %d\n", index);
 
-    printf("Total number of letter are %d and total number of words are %d and total number of sentence are %d\n", letter_count, word_count, sen_count);
+    // if ( index )
+    
+    // {
+    //     /* code */
+    // }
+    
     
 }   
