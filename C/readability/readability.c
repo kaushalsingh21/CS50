@@ -36,11 +36,6 @@ int main(void){
 
     printf("index is %d\n", index);
 
-    // if ( index )
-    
-    // {
-    //     /* code */
-    // }
     
     
 }   
